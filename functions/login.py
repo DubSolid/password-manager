@@ -8,11 +8,11 @@ db = Database()
 
 
 def login(db):
-    username = input('Enter your username: ')
-
     max_attempts = 3
     user_id = None
+
     for attempt in range(max_attempts):
+        username = input('Enter your username: ')
         password = getpass.getpass('Enter your password: ')
 
         result = db.login_user(username)
@@ -34,7 +34,7 @@ def login(db):
 
         else:
             logged_in = False
-            print(tcolors.WARNING('(-) User not found!'))
+            print(tcolors.WARNING('(-) Username or password wrong, please try again!'))
 
     else:
         logged_in = False
