@@ -1,6 +1,8 @@
 from utils.tcolors import tcolors
 from functions.item_operations import item_creation
 from functions.item_operations import item_retrieval
+from functions.item_operations import item_update
+from functions.item_operations import item_deletion
 from functions.database_operations import Database
 
 
@@ -32,10 +34,11 @@ def user_menu(logged_in, username, user_id):
                     item_retrieval(db, user_id)
                     selection_made = True
                 case '3':
-                    # TODO: Make a edit function
-                    pass
+                    item_update(db, user_id)
+                    selection_made = True
                 case '4':
-                    # TODO: Make a deletion of items function
+                    item_deletion(db, user_id)
+                    selection_made = True
                     pass
                 case '5':
                     logout_message = '(-) Logging out...'

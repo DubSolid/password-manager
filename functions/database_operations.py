@@ -77,8 +77,27 @@ class Database:
 
     def retrieve_item(self, user_id):
         self.cursor.execute('''
-            SELECT item_name, encrypted_username, encrypted_password, url, notes 
+            SELECT id, item_name, encrypted_username, encrypted_password, url, notes 
             FROM stored_items 
             WHERE user_id = ?
         ''', (user_id,))
         return self.cursor.fetchall()
+    
+
+    def update_item(self, item_id, user_id, item_name, stored_username, stored_password, url, notes):
+        self.cursor.execute('''
+        UPDATE stored_items 
+        SET item_name = ?, encrypted_username = ?, encrypted_password = ?, url = ?, notes = ?
+        WHERE id = ? AND user_id = ?
+    ''', (item_name, stored_username, stored_password, url, notes, item_id, user_id))
+        self.conn.commit()
+    print(tcolors.GREEN('Item successfully updated!'))
+
+
+    def delete_item(self, item_id, user_id):
+        self.cursor.execute('''
+            DELETE FROM stored_items 
+            WHERE id = ? AND user_id = ?
+        ''', (item_id, user_id))
+        self.conn.commit()
+        print(tcolors.GREEN('Item successfully deleted!'))
