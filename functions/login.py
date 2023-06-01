@@ -25,12 +25,14 @@ def login(db):
 
             if hashed_password == stored_password:
                 logged_in = True
-                print(tcolors.GREEN('(+) Login successful!')) 
+                login_message = '(+) Login successful!'
+                seperator = '-' * len(login_message)
+                print(f'\n{seperator}\n{tcolors.GREEN(login_message)}\n{seperator}')
                 break  
 
             else:
                 logged_in = False
-                print(tcolors.WARNING('(-) Wrong password, try again...'))
+                print(tcolors.WARNING('(-) Username or password wrong, please try again!'))
 
         else:
             logged_in = False

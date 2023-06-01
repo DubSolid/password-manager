@@ -39,7 +39,7 @@ def item_retrieval(db: Database, user_id):
     else:
         print(tcolors.GREEN('(+) Items: '))
         for i, item in enumerate(items, start=1):
-            print(f'{i}, Item Name: {item[0]}')
+            print(f'{i}, Item Name: {item[1]}')
 
     while True:
             item_number_input = input(tcolors.GREEN('(+) Select which item you want to access (select with a number): '))
@@ -54,11 +54,11 @@ def item_retrieval(db: Database, user_id):
                 selected_item = items[item_number - 1]
                 print(tcolors.GREEN('(+) Selected item: '))
                 print(f'\n'
-                      f'Item Name: {tcolors.GREEN(selected_item[0])}\n'
-                      f'Username: {tcolors.GREEN(selected_item[1])}\n'
-                      f'Password: {tcolors.GREEN(selected_item[2])}\n'
-                      f'URL: {tcolors.GREEN(selected_item[3])}\n'
-                      f'Notes: {tcolors.GREEN(selected_item[4])}')
+                      f'Item Name: {tcolors.GREEN(str(selected_item[0]))}\n'
+                      f'Username: {tcolors.GREEN(str(selected_item[1]))}\n'
+                      f'Password: {tcolors.GREEN(str(selected_item[2]))}\n'
+                      f'URL: {tcolors.GREEN(str(selected_item[3]))}\n'
+                      f'Notes: {tcolors.GREEN(str(selected_item[4]))}')
                 pyperclip.copy(selected_item[2])
                 print(tcolors.GREEN('(+) Password copied to clipboard!'))
                 input(tcolors.GREEN('\n(+) Press Enter to continue...'))
